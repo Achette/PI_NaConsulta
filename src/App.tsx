@@ -1,9 +1,10 @@
 import React from "react";
-import { Header } from "./components";
+import { Header, SectionHome } from "./components";
 
 function App() {
   return <>
     <Header />
+    <SectionHome />
   </>;
 }
 

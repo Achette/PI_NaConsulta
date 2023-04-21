@@ -1,4 +1,4 @@
-import { Image, Flex, Link, Button } from "@chakra-ui/react";
+import { Image, Flex, Link, Button, Box } from "@chakra-ui/react";
 import Logo from "../../assets/img/Logo.svg";
 
 export const Header = () => {
@@ -10,6 +10,7 @@ export const Header = () => {
       color="#FFF"
       justifyContent="space-evenly"
       alignItems="center"
+    
     >
       <Image w="20.625rem" h="4.5rem" src={Logo} />
 
@@ -37,6 +38,7 @@ export const Header = () => {
       >
         AGENDAR CONSULTA
       </Button>
+
     </Flex>
   );
 };
