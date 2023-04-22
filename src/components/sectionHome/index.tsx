@@ -20,13 +20,20 @@ export const SectionHome = () => {
     >
       <Flex mt="5rem" w="100%" justifyContent="center" p="0 10rem">
         <Box w="100%">
-          <Heading as="h2" color="#FFF" fontSize="2.5rem" lineHeight="3.8rem">
+          <Heading
+            as="h2"
+            color="#FFF"
+            fontSize="2.5rem"
+            lineHeight="3.8rem"
+            pl="1.5rem"
+          >
             Procure por um especialista
           </Heading>
           <Text
             color="rgba(255, 255, 255, 0.8)"
             fontSize="1.5rem"
             lineHeight="2.3rem"
+            pl="1.5rem"
           >
             Um jeito fácil de agendar consultas médicas
           </Text>
