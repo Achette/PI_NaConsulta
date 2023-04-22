@@ -1,11 +1,14 @@
 import React from "react";
-import { Header, SectionHome } from "./components";
+import { Header, SectionHome, SectionServices } from "./components";
 
 function App() {
-  return <>
-    <Header />
-    <SectionHome />
-  </>;
+  return (
+    <>
+      <Header />
+      <SectionHome />
+      <SectionServices />
+    </>
+  );
 }
 
 export default App;
