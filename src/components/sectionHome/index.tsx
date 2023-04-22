@@ -1,16 +1,25 @@
-import { Box, Flex, Heading, Image, Input, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  Input,
+  Text,
+} from "@chakra-ui/react";
 import imgDocs from "../../assets/img/img-doctors.svg";
 
 export const SectionHome = () => {
   return (
     <Flex
+      w="100%"
       h="27.5rem"
       bgColor="#3DCCB7"
       alignItems="center"
       justifyContent="center"
     >
-      <Flex mt="5rem">
-        <Box>
+      <Flex mt="5rem" w="100%" justifyContent="center" p="0 10rem">
+        <Box w="100%">
           <Heading as="h2" color="#FFF" fontSize="2.5rem" lineHeight="3.8rem">
             Procure por um especialista
           </Heading>
@@ -21,25 +30,58 @@ export const SectionHome = () => {
           >
             Um jeito fácil de agendar consultas médicas
           </Text>
-          <Flex>
+          <Flex
+            p="1.5rem"
+            bgColor="#47C4AB"
+            w="max-content"
+            mt="1.5rem"
+            borderRadius="0.5rem"
+          >
             <Input
               h="3.75rem"
-              w="23.625rem"
+              w="20rem"
               borderRadius="0.5rem"
               border="none"
               placeholder="Médico, Serviço, Especialidade"
+              mr="1rem"
+              _placeholder={{
+                color: "rgba(0, 0, 0, 0.3)",
+                pl: "1rem",
+                lineHeight: "1.5rem",
+                fontSize: "1rem",
+              }}
             />
 
             <Input
               h="3.75rem"
-              w="23.625rem"
+              w="20rem"
               borderRadius="0.5rem"
               border="none"
               placeholder="Local ex. São Paulo"
+              mr="1rem"
+              _placeholder={{
+                color: "rgba(0, 0, 0, 0.3)",
+                pl: "1rem",
+                lineHeight: "1.5rem",
+                fontSize: "1rem",
+              }}
             />
+            <Button
+              w="9.25rem"
+              bgColor="#004238"
+              h="3.75rem"
+              borderRadius="0.5rem"
+              color="#FFF"
+              border="none"
+              fontWeight={500}
+              fontSize="1.25rem"
+              cursor="pointer"
+            >
+              Pesquisar
+            </Button>
           </Flex>
         </Box>
-        <Image zIndex="1" src={imgDocs} />
+        <Image alignContent="end" src={imgDocs} />
       </Flex>
     </Flex>
   );
