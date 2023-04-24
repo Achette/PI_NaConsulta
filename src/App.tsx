@@ -2,6 +2,7 @@ import React from "react";
 import {
   Header,
   SectionAboutUs,
+  SectionDepositions,
   SectionHome,
   SectionServices,
 } from "./components";
@@ -13,6 +14,7 @@ function App() {
       <SectionHome />
       <SectionServices />
       <SectionAboutUs />
+      <SectionDepositions />
     </>
   );
 }

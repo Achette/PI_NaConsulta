@@ -11,6 +11,7 @@ export const Header = () => {
       justifyContent="space-evenly"
       alignItems="center"
       position="fixed"
+      zIndex="1"
       top="0"
     >
       <Image w="20.625rem" h="4.5rem" src={Logo} />

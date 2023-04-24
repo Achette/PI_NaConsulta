@@ -1,3 +1,4 @@
+import imgDocs from "../../assets/img/img-doctors.svg";
 import {
   Box,
   Button,
@@ -7,7 +8,6 @@ import {
   Input,
   Text,
 } from "@chakra-ui/react";
-import imgDocs from "../../assets/img/img-doctors.svg";
 
 export const SectionHome = () => {
   return (
