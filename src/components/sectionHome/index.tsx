@@ -17,6 +17,7 @@ export const SectionHome = () => {
       bgColor="#3DCCB7"
       alignItems="center"
       justifyContent="center"
+      mt="7.5rem"
     >
       <Flex mt="5rem" w="100%" justifyContent="center" p="0 10rem">
         <Box w="100%">

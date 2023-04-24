@@ -10,6 +10,8 @@ export const Header = () => {
       color="#FFF"
       justifyContent="space-evenly"
       alignItems="center"
+      position="fixed"
+      top="0"
     >
       <Image w="20.625rem" h="4.5rem" src={Logo} />
 

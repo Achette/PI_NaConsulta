@@ -32,7 +32,12 @@ export const SectionServices = () => {
           Nossas soluções para você
         </Heading>
       </Flex>
-      <HStack>
+      <HStack gap="1rem" mb="1rem">
+        <ServiceCard />
+        <ServiceCard />
+        <ServiceCard />
+      </HStack>
+      <HStack gap="1rem" mt="1rem">
         <ServiceCard />
         <ServiceCard />
         <ServiceCard />
