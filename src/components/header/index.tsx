@@ -10,7 +10,6 @@ export const Header = () => {
       color="#FFF"
       justifyContent="space-evenly"
       alignItems="center"
-    
     >
       <Image w="20.625rem" h="4.5rem" src={Logo} />
 
@@ -38,7 +37,6 @@ export const Header = () => {
       >
         AGENDAR CONSULTA
       </Button>
-
     </Flex>
   );
 };
