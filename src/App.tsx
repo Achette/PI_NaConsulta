@@ -1,14 +1,18 @@
 import React from "react";
-import { Header, SectionHome, SectionServices } from "./components";
-import { Box } from "@chakra-ui/react";
+import {
+  Header,
+  SectionAboutUs,
+  SectionHome,
+  SectionServices,
+} from "./components";
 
 function App() {
   return (
     <>
       <Header />
-
       <SectionHome />
       <SectionServices />
+      <SectionAboutUs />
     </>
   );
 }
