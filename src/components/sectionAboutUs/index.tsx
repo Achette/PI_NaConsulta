@@ -1,5 +1,5 @@
 import { Flex, HStack, Heading, Image, Text } from "@chakra-ui/react";
-import DoctorWithFamily from "../../assets/img/doc-with-family.svg";
+import DoctorWithFamily from "../../assets/img/doc-with-family.png";
 
 export const SectionAboutUs = () => {
   return (
