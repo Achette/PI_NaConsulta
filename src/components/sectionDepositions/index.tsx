@@ -1,10 +1,9 @@
-import { Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { Flex, HStack, Heading, Text, VStack } from "@chakra-ui/react";
 import { CommentCard } from "../commentCard";
-
 
 export const SectionDepositions = () => {
   return (
-    <Flex justifyContent="center" p="9.25rem 0 0 8.5rem">
+    <Flex justifyContent="center" p="9.25rem 0 0 8.5rem" h="38rem">
       <VStack>
         <Heading
           as="h2"
@@ -26,8 +25,10 @@ export const SectionDepositions = () => {
         >
           Opniões de nossos Clientes
         </Text>
-
-        <CommentCard />
+        <HStack>
+          <CommentCard />
+          <CommentCard />
+        </HStack>
       </VStack>
     </Flex>
   );
