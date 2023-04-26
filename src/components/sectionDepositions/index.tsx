@@ -1,5 +1,6 @@
 import { Flex, Heading, Text, VStack } from "@chakra-ui/react";
-import Aspas from "../../assets/img/Aspas.svg";
+import { CommentCard } from "../commentCard";
+
 
 export const SectionDepositions = () => {
   return (
@@ -25,6 +26,8 @@ export const SectionDepositions = () => {
         >
           Opniões de nossos Clientes
         </Text>
+
+        <CommentCard />
       </VStack>
     </Flex>
   );
