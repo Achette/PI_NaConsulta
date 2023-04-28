@@ -3,6 +3,7 @@ import Aspas from "../../assets/img/Aspas.svg";
 import Avatar from "../../assets/img/avatar.png";
 
 export const CommentCard = () => {
+    
   return (
     <Flex
       flexDirection="column"

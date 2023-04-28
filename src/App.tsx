@@ -1,21 +1,13 @@
-import React from "react";
-import {
-  Header,
-  SectionAboutUs,
-  SectionDepositions,
-  SectionHome,
-  SectionServices,
-} from "./components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LandingPage } from "./routes";
 
 function App() {
   return (
-    <>
-      <Header />
-      <SectionHome />
-      <SectionServices />
-      <SectionAboutUs />
-      <SectionDepositions />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
