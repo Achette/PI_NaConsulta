@@ -5,6 +5,7 @@ import {
   SectionHome,
   SectionServices,
 } from "../../components";
+import { FooterForm } from "../../components/footerForm";
 
 export const LandingPage = () => {
   return (
@@ -14,6 +15,7 @@ export const LandingPage = () => {
       <SectionServices />
       <SectionAboutUs />
       <SectionDepositions />
+      <FooterForm />
     </>
   );
 };
