@@ -39,6 +39,11 @@ export const FooterForm = () => {
             <FooterInput placeholder="(00) 00000-000" />
           </Box>
         </Flex>
+
+        <>
+        <Label name="Mensagem" />
+        <FooterInput placeholder="Digite sua mensagem" heigth="4.5rem" />
+        </>
       </FormControl>
     </Box>
   );
