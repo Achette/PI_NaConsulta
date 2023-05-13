@@ -5,6 +5,7 @@ import Facebook from "../../assets/img/Facebook.png";
 import Instagram from "../../assets/img/Instagram.png";
 import Twitter from "../../assets/img/Twitter.png";
 import LinkedIn from "../../assets/img/LinkedIn.png";
+import { FooterLinks } from "../footerLinks";
 
 export const Footer = () => {
   return (
@@ -35,26 +36,7 @@ export const Footer = () => {
             </HStack>
           </VStack>
 
-          <Box
-            display="flex"
-            w="18.25rem"
-            h="11.5rem"
-            justifyContent="space-between"
-            border="1px solid red"
-          >
-            <VStack>
-              <Text>LINKS</Text>
-              <Link>Sobre Nós</Link>
-              <Link>Consultas</Link>
-              <Link>Depoimentos</Link>
-              <Link>Ajuda</Link>
-            </VStack>
-            <VStack>
-              <Text>SERVIÇOS</Text>
-              <Link>Agendamentos</Link>
-              <Link>Lembretes</Link>
-            </VStack>
-          </Box>
+          <FooterLinks />
 
           <FooterForm />
         </HStack>
