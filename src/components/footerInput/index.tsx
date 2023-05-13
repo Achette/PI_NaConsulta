@@ -1,4 +1,4 @@
-import { Input, theme } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
 
 type FooterInputProps = {
   placeholder: string;
