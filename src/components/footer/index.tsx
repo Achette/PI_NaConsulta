@@ -40,8 +40,17 @@ export const Footer = () => {
 
           <FooterForm />
         </HStack>
-        <Text>&copy; NaConsulta 2023. All rigths reserved.</Text>
       </VStack>
+      <Text
+        textAlign="center"
+        fontSize="1rem"
+        lineHeight="1.5rem"
+        letterSpacing="-0.01em"
+        fontWeight={300}
+        color="#004238"
+      >
+        &copy; NaConsulta 2023. All rigths reserved.
+      </Text>
     </Box>
   );
 };
