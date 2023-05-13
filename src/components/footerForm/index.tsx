@@ -1,4 +1,4 @@
-import { Box, Flex, FormControl, Image, Input, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, FormControl, Image, Text } from "@chakra-ui/react";
 import Email from "../../assets/img/emailIcon.png";
 import { Label } from "../formLabel";
 import { FooterInput } from "../footerInput";
@@ -24,11 +24,11 @@ export const FooterForm = () => {
         </Text>
       </Flex>
       <FormControl>
-        <>
+        <Box mb="1rem">
           <Label name="Nome" />
           <FooterInput placeholder="Digite seu nome" />
-        </>
-        <Flex w="100%" justifyContent="space-between">
+        </Box>
+        <Flex w="100%" justifyContent="space-between" mb="1rem">
           <Box>
             <Label name="Email" />
             <FooterInput placeholder="exemplo@dominio.com" />
@@ -40,10 +40,24 @@ export const FooterForm = () => {
           </Box>
         </Flex>
 
-        <>
-        <Label name="Mensagem" />
-        <FooterInput placeholder="Digite sua mensagem" heigth="4.5rem" />
-        </>
+        <Box mb="1rem">
+          <Label name="Mensagem" />
+          <FooterInput placeholder="Digite sua mensagem" heigth="4.5rem" />
+        </Box>
+
+        <Button
+          w="4.75rem"
+          h="2rem"
+          bgColor="#00C3A5"
+          borderRadius="0.5rem"
+          border="none"
+          color="#FFF"
+          fontWeight={600}
+          fontSize="0.75rem"
+          lineHeight="1.125rem"
+        >
+          Enviar
+        </Button>
       </FormControl>
     </Box>
   );
