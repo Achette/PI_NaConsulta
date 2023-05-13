@@ -55,6 +55,7 @@ export const FooterForm = () => {
           fontWeight={600}
           fontSize="0.75rem"
           lineHeight="1.125rem"
+          cursor="pointer"
         >
           Enviar
         </Button>
