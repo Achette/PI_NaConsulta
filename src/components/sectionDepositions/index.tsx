@@ -3,7 +3,7 @@ import { CommentCard } from "../commentCard";
 
 export const SectionDepositions = () => {
   return (
-    <Flex justifyContent="center" p="9.25rem 0 0 8.5rem" h="38rem">
+    <Flex justifyContent="center" p="9.25rem 0 0 8.5rem" h="38rem" id="depositions">
       <VStack>
         <Heading
           as="h2"

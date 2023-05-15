@@ -3,7 +3,7 @@ import DoctorWithFamily from "../../assets/img/doc-with-family.png";
 
 export const SectionAboutUs = () => {
   return (
-    <Flex h="46rem" bgColor="rgba(61, 204, 183, 0.16)" p="10rem 11.875rem">
+    <Flex h="46rem" bgColor="rgba(61, 204, 183, 0.16)" p="10rem 11.875rem" id="aboutUs">
       <HStack gap="5rem">
         <Image src={DoctorWithFamily} />
         <Flex flexDirection="column">

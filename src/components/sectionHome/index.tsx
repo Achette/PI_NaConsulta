@@ -18,6 +18,7 @@ export const SectionHome = () => {
       alignItems="center"
       justifyContent="center"
       mt="7.5rem"
+      id="home"
     >
       <Flex mt="5rem" w="100%" justifyContent="center" p="0 10rem">
         <Box w="100%">
