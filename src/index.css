@@ -7,4 +7,9 @@
 html,
 body {
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
 }
