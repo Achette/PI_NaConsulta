@@ -23,10 +23,18 @@ export const Header = () => {
         w="34.625rem"
         justifyContent="space-between"
       >
-        <Link href="#home" color="#FFF">Início</Link>
-        <Link href="#aboutUs" color="#FFF">Sobre</Link>
-        <Link href="#depositions" color="#FFF">Depoimentos</Link>
-        <Link href="#talkToUs" color="#FFF">Fale Conosco</Link>
+        <Link href="#home" color="#FFF">
+          Início
+        </Link>
+        <Link href="#aboutUs" color="#FFF">
+          Sobre
+        </Link>
+        <Link href="#depositions" color="#FFF">
+          Depoimentos
+        </Link>
+        <Link href="#talkToUs" color="#FFF">
+          Fale Conosco
+        </Link>
       </Flex>
 
       <Button

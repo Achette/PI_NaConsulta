@@ -3,7 +3,12 @@ import DoctorWithFamily from "../../assets/img/doc-with-family.png";
 
 export const SectionAboutUs = () => {
   return (
-    <Flex h="46rem" bgColor="rgba(61, 204, 183, 0.16)" p="10rem 11.875rem" id="aboutUs">
+    <Flex
+      h="46rem"
+      bgColor="rgba(61, 204, 183, 0.16)"
+      p="10rem 11.875rem"
+      id="aboutUs"
+    >
       <HStack gap="5rem">
         <Image src={DoctorWithFamily} />
         <Flex flexDirection="column">
@@ -31,7 +36,14 @@ export const SectionAboutUs = () => {
           </Heading>
 
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora incidunt accusamus nobis voluptate quas sapiente pariatur facere, cum quasi excepturi atque, itaque quia necessitatibus est voluptatem enim culpa doloremque consequatur! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit unde voluptas atque maiores provident illum aperiam saepe, explicabo molestiae ad iure, impedit voluptatem dolor nam. Nobis beatae quibusdam accusamus repellendus.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora
+            incidunt accusamus nobis voluptate quas sapiente pariatur facere,
+            cum quasi excepturi atque, itaque quia necessitatibus est voluptatem
+            enim culpa doloremque consequatur! Lorem, ipsum dolor sit amet
+            consectetur adipisicing elit. Reprehenderit unde voluptas atque
+            maiores provident illum aperiam saepe, explicabo molestiae ad iure,
+            impedit voluptatem dolor nam. Nobis beatae quibusdam accusamus
+            repellendus.
           </Text>
         </Flex>
       </HStack>
