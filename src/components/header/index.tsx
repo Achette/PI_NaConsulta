@@ -1,7 +1,14 @@
 import { Image, Flex, Link, Button } from "@chakra-ui/react";
 import Logo from "../../assets/img/Logo.svg";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/login");
+  };
+
   return (
     <Flex
       w="100%"
@@ -45,6 +52,9 @@ export const Header = () => {
         border="1px solid #FFF"
         bgColor="#3DCCB7"
         fontSize="0.875rem"
+        cursor="pointer"
+        _hover={{ bg: "#FFF", color: "#3DCCB7", fontWeight: "600" }}
+        onClick={() => handleNavigate()}
       >
         AGENDAR CONSULTA
       </Button>
