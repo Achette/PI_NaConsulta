@@ -59,7 +59,7 @@ export const Login = () => {
             Entrar
           </Button>
 
-          <Text mb="2.5rem">Esqueceu a sua senha?</Text>
+          <Text mb="2.5rem" color="#004238">Esqueceu a sua senha?</Text>
 
           <Flex align="center" w="100%" justifyContent="space-between">
             <Divider w="12.75rem" h="0.05625rem" bg="rgba(0, 0, 0, 0.5)" />
