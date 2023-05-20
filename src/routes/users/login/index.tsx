@@ -8,7 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { GoogleButton } from "../../../components";
+import { FacebookButton, GoogleButton } from "../../../components";
 
 export const Login = () => {
   return (
@@ -73,7 +73,8 @@ export const Login = () => {
             </Text>
             <Divider w="12.75rem" h="0.05625rem" bg="rgba(0, 0, 0, 0.5)" />
           </Flex>
-        <GoogleButton />
+          <GoogleButton />
+          <FacebookButton />
         </VStack>
       </Box>
     </Box>
