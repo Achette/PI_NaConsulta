@@ -9,3 +9,4 @@ export * from "./footer/index";
 export * from "./footerLinks/index";
 export * from "./googleButton/index";
 export * from './facebookButton/index'
+export * from './appleButton/index'

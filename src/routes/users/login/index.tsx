@@ -8,7 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { FacebookButton, GoogleButton } from "../../../components";
+import { AppleButton, FacebookButton, GoogleButton } from "../../../components";
 
 export const Login = () => {
   return (
@@ -75,6 +75,7 @@ export const Login = () => {
           </Flex>
           <GoogleButton />
           <FacebookButton />
+          <AppleButton />
         </VStack>
       </Box>
     </Box>
