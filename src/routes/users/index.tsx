@@ -7,7 +7,7 @@ export const UserAccess = () => {
     <Flex
       flexDir="column"
       alignItems="center"
-      maxH="100vh"
+      minH="100vh"
       w="100%"
       mt="1rem"
       p="0 14.125rem"
