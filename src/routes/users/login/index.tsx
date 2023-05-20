@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   Input,
+  Link,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -12,7 +13,7 @@ import { AppleButton, FacebookButton, GoogleButton } from "../../../components";
 
 export const Login = () => {
   return (
-    <Box w="100%" h="100%">
+    <Box w="100%" h="100%" mb="2rem">
       <Box w="37.5rem" margin="0 auto">
         <Heading
           as="h1"
@@ -59,7 +60,9 @@ export const Login = () => {
             Entrar
           </Button>
 
-          <Text mb="2.5rem" color="#004238">Esqueceu a sua senha?</Text>
+          <Text mb="2.5rem" color="#004238">
+            Esqueceu a sua senha?
+          </Text>
 
           <Flex align="center" w="100%" justifyContent="space-between">
             <Divider w="12.75rem" h="0.05625rem" bg="rgba(0, 0, 0, 0.5)" />
@@ -76,6 +79,24 @@ export const Login = () => {
           <GoogleButton />
           <FacebookButton />
           <AppleButton />
+          <Divider
+            w="37.5rem"
+            h="0.05625rem"
+            bg="rgba(0, 0, 0, 0.5)"
+            mt="2.5rem"
+          />
+          <Text
+            m="2.5rem 0"
+            color="#004238"
+            fontWeight={300}
+            fontSize="1rem"
+            lineHeight="1.5rem"
+          >
+            Ainda não tem conta?{" "}
+            <Link fontWeight={700} cursor="pointer">
+              Faça seu cadastro!
+            </Link>
+          </Text>
         </VStack>
       </Box>
     </Box>
