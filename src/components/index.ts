@@ -5,5 +5,6 @@ export * from "./serviceCard/index";
 export * from "./sectionAboutUs/index";
 export * from "./sectionDepositions/index";
 export * from "./commentCard/index";
-export * from "./footer/index"
-export * from './footerLinks/index'
+export * from "./footer/index";
+export * from "./footerLinks/index";
+export * from "./googleButton/index";

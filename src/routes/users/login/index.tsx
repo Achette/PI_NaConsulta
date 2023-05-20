@@ -8,10 +8,11 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { GoogleButton } from "../../../components";
 
 export const Login = () => {
   return (
-    <Box border="1px solid red" w="100%" h="100%">
+    <Box w="100%" h="100%">
       <Box w="37.5rem" margin="0 auto">
         <Heading
           as="h1"
@@ -59,6 +60,7 @@ export const Login = () => {
           </Button>
 
           <Text mb="2.5rem">Esqueceu a sua senha?</Text>
+
           <Flex align="center" w="100%" justifyContent="space-between">
             <Divider w="12.75rem" h="0.05625rem" bg="rgba(0, 0, 0, 0.5)" />
             <Text
@@ -71,6 +73,7 @@ export const Login = () => {
             </Text>
             <Divider w="12.75rem" h="0.05625rem" bg="rgba(0, 0, 0, 0.5)" />
           </Flex>
+        <GoogleButton />
         </VStack>
       </Box>
     </Box>
