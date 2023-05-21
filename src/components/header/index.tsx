@@ -6,7 +6,7 @@ export const Header = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/login");
+    navigate("/access");
   };
 
   return (

@@ -28,7 +28,7 @@ export const FooterForm = () => {
           <Label name="Nome" />
           <FooterInput placeholder="Digite seu nome" />
         </Box>
-        <Flex w="100%" justifyContent="space-between" mb="1rem">
+        <Flex w="100%" justifyContent="space-between" mb="1rem" gap="1rem">
           <Box>
             <Label name="Email" />
             <FooterInput placeholder="exemplo@dominio.com" />

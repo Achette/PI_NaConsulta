@@ -23,7 +23,6 @@ export const FooterInput = ({
         color: "rgba(73, 80, 87, 0.5)",
         fontSize: "0.5rem",
         lineHeight: "150%",
-        pl: "0.625rem",
       }}
     />
   );

@@ -53,12 +53,6 @@ export const SectionHome = () => {
               border="none"
               placeholder="Médico, Serviço, Especialidade"
               mr="1rem"
-              _placeholder={{
-                color: "rgba(0, 0, 0, 0.3)",
-                pl: "1rem",
-                lineHeight: "1.5rem",
-                fontSize: "1rem",
-              }}
             />
 
             <Input
@@ -68,12 +62,6 @@ export const SectionHome = () => {
               border="none"
               placeholder="Local ex. São Paulo"
               mr="1rem"
-              _placeholder={{
-                color: "rgba(0, 0, 0, 0.3)",
-                pl: "1rem",
-                lineHeight: "1.5rem",
-                fontSize: "1rem",
-              }}
             />
             <Button
               w="9.25rem"
