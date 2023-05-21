@@ -1,4 +1,4 @@
-import { Divider, Flex, Image, Link, Text } from "@chakra-ui/react";
+import { Divider, Flex, Image } from "@chakra-ui/react";
 import Logo from "../../assets/img/Logo_light_green.png";
 import { Outlet } from "react-router-dom";
 

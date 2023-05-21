@@ -12,11 +12,11 @@ import {
 import { useNavigate } from "react-router-dom";
 import { AppleButton, FacebookButton, GoogleButton } from "../../../components";
 
-export const Login = () => {
+export const Signin = () => {
   const navigate = useNavigate();
 
-  const handleGoToSignin = () => {
-    navigate("/access/signin");
+  const handleGoToLogin = () => {
+    navigate("/access");
   };
   return (
     <Box w="100%" h="100%" mb="2rem">
@@ -29,12 +29,39 @@ export const Login = () => {
           lineHeight="3.75rem"
           mb="1.5rem"
         >
-          Faça login na sua conta
+          Crie uma conta
         </Heading>
         <VStack h="100%" gap="1.5rem">
+          <GoogleButton />
+          <FacebookButton />
+          <AppleButton />
+
+          <Flex align="center" w="100%" justifyContent="space-between">
+            <Divider w="12.75rem" h="0.05625rem" bg="rgba(0, 0, 0, 0.5)" />
+            <Text
+              color="#004238"
+              fontSize="1rem"
+              lineHeight="1.5rem"
+              fontWeight={400}
+            >
+              ou
+            </Text>
+            <Divider w="12.75rem" h="0.05625rem" bg="rgba(0, 0, 0, 0.5)" />
+          </Flex>
+
           <Input
             type="text"
-            placeholder="E-mail"
+            placeholder="Digite seu e-mail"
+            w="37.5rem"
+            h="3.5rem"
+            bgColor="#F4F4F4"
+            border="0.9px solid #004238"
+            borderRadius="0.5rem"
+          />
+
+          <Input
+            type="text"
+            placeholder="Confirme seu e-mail"
             w="37.5rem"
             h="3.5rem"
             bgColor="#F4F4F4"
@@ -63,34 +90,9 @@ export const Login = () => {
             lineHeight="1.5rem"
             cursor="pointer"
           >
-            Entrar
+            Cadastrar
           </Button>
 
-          <Text mb="2.5rem" color="#004238">
-            Esqueceu a sua senha?
-          </Text>
-
-          <Flex align="center" w="100%" justifyContent="space-between">
-            <Divider w="12.75rem" h="0.05625rem" bg="rgba(0, 0, 0, 0.5)" />
-            <Text
-              color="#004238"
-              fontSize="1rem"
-              lineHeight="1.5rem"
-              fontWeight={400}
-            >
-              ou
-            </Text>
-            <Divider w="12.75rem" h="0.05625rem" bg="rgba(0, 0, 0, 0.5)" />
-          </Flex>
-          <GoogleButton />
-          <FacebookButton />
-          <AppleButton />
-          <Divider
-            w="37.5rem"
-            h="0.05625rem"
-            bg="rgba(0, 0, 0, 0.5)"
-            mt="2.5rem"
-          />
           <Text
             m="2.5rem 0"
             color="#004238"
@@ -98,13 +100,35 @@ export const Login = () => {
             fontSize="1rem"
             lineHeight="1.5rem"
           >
-            Ainda não tem conta?{" "}
+            Ao criar uma conta de usuário, você aceita os{" "}
+            <Link fontWeight={700} cursor="pointer">
+              termos e condições
+            </Link>{" "}
+            de uso da NaConsulta e reconhece que leu e entendeu nossa política
+            de privacidade
+          </Text>
+
+          <Divider
+            w="37.5rem"
+            h="0.05625rem"
+            bg="rgba(0, 0, 0, 0.5)"
+            mt="2.5rem"
+          />
+
+          <Text
+            m="2.5rem 0"
+            color="#004238"
+            fontWeight={300}
+            fontSize="1rem"
+            lineHeight="1.5rem"
+          >
+            Já possui uma conta?{" "}
             <Link
               fontWeight={700}
               cursor="pointer"
-              onClick={() => handleGoToSignin()}
+              onClick={() => handleGoToLogin()}
             >
-              Faça seu cadastro!
+              Faça login!
             </Link>
           </Text>
         </VStack>
