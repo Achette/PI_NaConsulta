@@ -4,7 +4,7 @@ import AppleIcon from "../../assets/img/appleIcon.png";
 
 export const AppleButton = () => {
   return (
-    <Link cursor="pointer">
+    <Link>
       <VStack
         justifyContent="center"
         w="37.5rem"

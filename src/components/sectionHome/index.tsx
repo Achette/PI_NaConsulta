@@ -72,7 +72,6 @@ export const SectionHome = () => {
               border="none"
               fontWeight={500}
               fontSize="1.25rem"
-              cursor="pointer"
             >
               Pesquisar
             </Button>

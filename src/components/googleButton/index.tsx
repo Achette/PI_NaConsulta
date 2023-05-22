@@ -3,7 +3,7 @@ import GoogleIcon from "../../assets/img/googleIcon.png";
 
 export const GoogleButton = () => {
   return (
-    <Link cursor="pointer">
+    <Link>
       <VStack
         justifyContent="center"
         w="37.5rem"

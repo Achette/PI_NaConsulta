@@ -52,7 +52,6 @@ export const Header = () => {
         border="1px solid #FFF"
         bgColor="#3DCCB7"
         fontSize="0.875rem"
-        cursor="pointer"
         _hover={{ bg: "#FFF", color: "#3DCCB7", fontWeight: "600" }}
         onClick={() => handleNavigate()}
       >

@@ -4,7 +4,7 @@ import FacebookIcon from "../../assets/img/facebookIcon.png";
 
 export const FacebookButton = () => {
   return (
-    <Link cursor="pointer">
+    <Link>
       <VStack
         justifyContent="center"
         w="37.5rem"
