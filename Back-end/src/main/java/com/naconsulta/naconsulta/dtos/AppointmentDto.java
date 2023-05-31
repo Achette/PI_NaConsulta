@@ -1,35 +1,40 @@
 package com.naconsulta.naconsulta.dtos;
 
 import com.naconsulta.naconsulta.entities.Appointment;
-import com.naconsulta.naconsulta.entities.User;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.Objects;
 
 public class AppointmentDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+
+    @FutureOrPresent(message = "A data da consulta não pode ser passada")
     private Instant date;
+
+    @NotBlank(message = "Campo obrigatório")
     private String diagnosis;
+
+    @NotBlank(message = "Campo obrigatório")
     private String symptom;
-    private Long userId;
-    private Long doctorId;
+
+    private UserMinDto user;
+
+    private DoctorMaxAddressEspecializationDto doctor;
 
     public AppointmentDto() {
     }
 
-    public AppointmentDto(Long id, Instant date, String diagnosis, String symptom, Long userId, Long doctorId) {
+    public AppointmentDto(Long id, Instant date, String diagnosis, String symptom, UserMinDto user, DoctorMaxAddressEspecializationDto doctor) {
         this.id = id;
         this.date = date;
         this.diagnosis = diagnosis;
         this.symptom = symptom;
-        this.userId = userId;
-        this.doctorId = doctorId;
+        this.user = user;
+        this.doctor = doctor;
     }
 
     public AppointmentDto(Appointment entity) {
@@ -37,8 +42,8 @@ public class AppointmentDto implements Serializable {
         date = entity.getDate();
         diagnosis = entity.getDiagnosis();
         symptom = entity.getSymptom();
-        userId = entity.getUser().getId();
-        doctorId = entity.getDoctor().getId();
+        user = new UserMinDto(entity.getUser());
+        doctor = new DoctorMaxAddressEspecializationDto(entity.getDoctor());
     }
 
     public Long getId() {
@@ -73,19 +78,19 @@ public class AppointmentDto implements Serializable {
         this.symptom = symptom;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserMinDto getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(UserMinDto user) {
+        this.user = user;
     }
 
-    public Long getDoctorId() {
-        return doctorId;
+    public DoctorMaxAddressEspecializationDto getDoctor() {
+        return doctor;
     }
 
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
+    public void setDoctor(DoctorMaxAddressEspecializationDto doctor) {
+        this.doctor = doctor;
     }
 }

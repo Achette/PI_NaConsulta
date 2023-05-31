@@ -1,27 +1,43 @@
 package com.naconsulta.naconsulta.dtos;
 
-import com.naconsulta.naconsulta.entities.Telephone;
+import com.naconsulta.naconsulta.entities.Role;
 import com.naconsulta.naconsulta.entities.User;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UserFormDto implements Serializable {
     private static final long serialVersionUID = 1L;
+
     private Long id;
+
+    @NotBlank(message = "Campo obrigatório")
     private String firstName;
+
+    @NotBlank(message = "Campo obrigatório")
     private String lastName;
+
+    @NotBlank(message = "Campo obrigatório")
+    private String gender;
+
+    @Email(message = "Favor inserir um email válido")
     private String email;
 
-    private List<TelephoneDto> phones = new ArrayList<>();
+    @NotEmpty(message = "Deve ter pelo menos um papel")
+    private Set<RoleDto> roles = new HashSet<>();
 
-    public UserFormDto() {}
+    public UserFormDto() {
+    }
 
-    public UserFormDto(Long id, String firstName, String lastName, String email) {
+    public UserFormDto(Long id, String firstName, String lastName, String gender, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
         this.email = email;
     }
 
@@ -29,12 +45,13 @@ public class UserFormDto implements Serializable {
         id = entity.getId();
         firstName = entity.getFirstName();
         lastName = entity.getLastName();
+        gender = entity.getGender();
         email = entity.getEmail();
     }
 
-    public UserFormDto(User entity, List<Telephone> phones) {
+    public UserFormDto(User entity, Set<Role> roles) {
         this(entity);
-        phones.forEach(phone -> this.phones.add(new TelephoneDto(phone)));
+        roles.forEach(role -> this.roles.add(new RoleDto(role)));
     }
 
     public Long getId() {
@@ -61,6 +78,14 @@ public class UserFormDto implements Serializable {
         this.lastName = lastName;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -69,7 +94,7 @@ public class UserFormDto implements Serializable {
         this.email = email;
     }
 
-    public List<TelephoneDto> getPhones() {
-        return phones;
+    public Set<RoleDto> getRoles() {
+        return roles;
     }
 }

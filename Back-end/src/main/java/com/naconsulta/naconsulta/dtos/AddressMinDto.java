@@ -1,34 +1,24 @@
-package com.naconsulta.naconsulta.entities;
+package com.naconsulta.naconsulta.dtos;
 
-import javax.persistence.*;
+import com.naconsulta.naconsulta.entities.Address;
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity
-@Table(name = "tb_address")
-public class Address implements Serializable {
+public class AddressMinDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String publicPlace;
     private String number;
     private String neighborhood;
     private Integer zipCode;
     private String room;
+    private CityDto city;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    public AddressMinDto() {
+    }
 
-    @OneToMany(mappedBy = "address")
-    private List<Doctor> doctors = new ArrayList<>();
-
-    public Address() {}
-
-    public Address(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room, City city) {
+    public AddressMinDto(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room, CityDto city) {
         this.id = id;
         this.publicPlace = publicPlace;
         this.number = number;
@@ -36,6 +26,16 @@ public class Address implements Serializable {
         this.zipCode = zipCode;
         this.room = room;
         this.city = city;
+    }
+
+    public AddressMinDto(Address entity) {
+        id = entity.getId();
+        publicPlace = entity.getPublicPlace();
+        number = entity.getNumber();
+        neighborhood = entity.getNeighborhood();
+        zipCode = entity.getZipCode();
+        room = entity.getRoom();
+        city = new CityDto(entity.getCity());
     }
 
     public Long getId() {
@@ -86,16 +86,12 @@ public class Address implements Serializable {
         this.room = room;
     }
 
-    public City getCity() {
+    public CityDto getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(CityDto city) {
         this.city = city;
     }
-
-    public List<Doctor> getDoctors() {
-        return doctors;
-    }
-
 }
+

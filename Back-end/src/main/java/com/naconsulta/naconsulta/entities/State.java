@@ -2,34 +2,36 @@ package com.naconsulta.naconsulta.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.*;
-
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table(name = "tb_specialization")
-public class Specialization implements Serializable {
+@Table(name = "tb_state")
+public class State implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "specialization")
-    private Set<Doctor> doctors = new HashSet<>();
+    @OneToMany(mappedBy = "state")
+    Set<City> cities = new HashSet<>();
 
-    public Specialization() {}
+    public State() {
+    }
 
-    public Specialization(long id, String name) {
+    public State(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,15 +43,15 @@ public class Specialization implements Serializable {
         this.name = name;
     }
 
-    public Set<Doctor> getDoctors() {
-        return doctors;
+    public Set<City> getCities() {
+        return cities;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Specialization that)) return false;
-        return getId() == that.getId();
+        if (!(o instanceof State state)) return false;
+        return Objects.equals(getId(), state.getId());
     }
 
     @Override

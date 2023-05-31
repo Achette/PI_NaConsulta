@@ -2,13 +2,16 @@ package com.naconsulta.naconsulta.dtos;
 
 import com.naconsulta.naconsulta.entities.Appointment;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.time.Instant;
 
 public class AppointmentUpdateDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @NotBlank(message = "Campo obrigatório")
     private String diagnosis;
+
+    @NotBlank(message = "Campo obrigatório")
     private String symptom;
 
 

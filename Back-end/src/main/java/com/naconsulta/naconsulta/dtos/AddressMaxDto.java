@@ -1,34 +1,29 @@
-package com.naconsulta.naconsulta.entities;
+package com.naconsulta.naconsulta.dtos;
 
-import javax.persistence.*;
+import com.naconsulta.naconsulta.entities.Address;
+import com.naconsulta.naconsulta.entities.Doctor;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "tb_address")
-public class Address implements Serializable {
+public class AddressMaxDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String publicPlace;
     private String number;
     private String neighborhood;
     private Integer zipCode;
     private String room;
+    private CityDto city;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    private List<DoctorNoAddressDto> doctors = new ArrayList<>();
 
-    @OneToMany(mappedBy = "address")
-    private List<Doctor> doctors = new ArrayList<>();
+    public AddressMaxDto() {
+    }
 
-    public Address() {}
-
-    public Address(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room, City city) {
+    public AddressMaxDto(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room, CityDto city) {
         this.id = id;
         this.publicPlace = publicPlace;
         this.number = number;
@@ -37,6 +32,22 @@ public class Address implements Serializable {
         this.room = room;
         this.city = city;
     }
+
+    public AddressMaxDto(Address entity) {
+        id = entity.getId();
+        publicPlace = entity.getPublicPlace();
+        number = entity.getNumber();
+        neighborhood = entity.getNeighborhood();
+        zipCode = entity.getZipCode();
+        room = entity.getRoom();
+        city = new CityDto(entity.getCity());
+    }
+
+    public AddressMaxDto(Address entity, List<Doctor> doctors) {
+        this(entity);
+        doctors.forEach(doctor -> this.doctors.add(new DoctorNoAddressDto(doctor)));
+    }
+
 
     public Long getId() {
         return id;
@@ -86,16 +97,17 @@ public class Address implements Serializable {
         this.room = room;
     }
 
-    public City getCity() {
+    public CityDto getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(CityDto city) {
         this.city = city;
     }
 
-    public List<Doctor> getDoctors() {
+    public List<DoctorNoAddressDto> getDoctors() {
         return doctors;
     }
 
 }
+

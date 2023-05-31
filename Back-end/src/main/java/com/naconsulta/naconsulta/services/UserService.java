@@ -1,20 +1,29 @@
 package com.naconsulta.naconsulta.services;
 
-import com.naconsulta.naconsulta.dtos.UserFormDto;
-import com.naconsulta.naconsulta.dtos.UserMaxDto;
+import com.naconsulta.naconsulta.dtos.*;
+import com.naconsulta.naconsulta.entities.Role;
 import com.naconsulta.naconsulta.entities.User;
+import com.naconsulta.naconsulta.repositories.RoleRepository;
 import com.naconsulta.naconsulta.repositories.UserRepository;
+import com.naconsulta.naconsulta.services.exceptions.DatabaseException;
 import com.naconsulta.naconsulta.services.exceptions.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -25,20 +34,77 @@ public class UserService implements UserDetailsService {
     private UserRepository repository;
 
     @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
     private AuthService authService;
 
-    @Transactional(readOnly = true)
-    public UserMaxDto userLogged() {
-        User entity = authService.authenticated();
-        return new UserMaxDto(entity, entity.getPhones(), entity.getRoles(), entity.getAppointments());
+    @Transactional
+    public UserFormDto update(Long id, UserUpdateDto dto) {
+        try {
+            User entity = repository.getReferenceById(id);
+            copyDtoToEntity(dto, entity);
+            entity = repository.save(entity);
+            return new UserFormDto(entity, entity.getRoles());
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Id: " + id + " not found");
+        }
+    }
+
+    @Transactional
+    public UserFormDto insert(UserInsertDto dto) {
+        User entity = new User();
+        copyDtoToEntity(dto, entity);
+        entity.setPassword(passwordEncoder.encode(dto.getPassword()));
+        entity = repository.save(entity);
+        return new UserFormDto(entity, entity.getRoles());
+    }
+
+    public void delete(Long id) {
+        try {
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("Id " + id + " not found");
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Integrity violation");
+        }
     }
 
     @Transactional(readOnly = true)
-    public UserFormDto findById(Long id) {
+    public List<UserMinDto> findAllOrByName(String name) {
+        List<User> list = repository.searchByName(name);
+        return list.stream().map(x -> new UserMinDto(x)).collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public UserMaxDto findById(Long id) {
         authService.validateSelfOrAdmin(id);
         Optional<User> obj = repository.findById(id);
         User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Resource not found"));
-        return new UserFormDto(entity, entity.getPhones());
+        return new UserMaxDto(entity, entity.getRoles(), entity.getAppointments());
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+    @Transactional(readOnly = true)
+    public UserMaxDto userLogged() {
+        User entity = authService.authenticated();
+        return new UserMaxDto(entity, entity.getRoles(), entity.getAppointments());
+    }
+
+    private void copyDtoToEntity(UserFormDto dto, User entity) {
+        entity.setFirstName(dto.getFirstName());
+        entity.setLastName(dto.getLastName());
+        entity.setGender(dto.getGender());
+        entity.setEmail(dto.getEmail());
+
+        entity.getRoles().clear();
+        for (RoleDto roleDto : dto.getRoles()) {
+            Role role = roleRepository.getReferenceById(roleDto.getId());
+            entity.getRoles().add(role);
+        }
     }
 
     @Override
