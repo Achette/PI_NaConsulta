@@ -2,19 +2,15 @@ import { Input } from "@chakra-ui/react";
 
 type FooterInputProps = {
   placeholder: string;
-  heigth?: string;
 };
 
-export const FooterInput = ({
-  placeholder,
-  heigth = "2rem",
-}: FooterInputProps) => {
+export const FooterInput = ({ placeholder }: FooterInputProps) => {
   return (
     <Input
       type="text"
       placeholder={placeholder}
       w="100%"
-      h={heigth}
+      h="2rem"
       borderRadius="0.5rem"
       backgroundColor="#DCE9E2"
       border="0.604861px solid #00856F"

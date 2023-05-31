@@ -1,4 +1,12 @@
-import { Box, Button, Flex, FormControl, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  FormControl,
+  Image,
+  Text,
+  Textarea,
+} from "@chakra-ui/react";
 import Email from "../../assets/img/emailIcon.png";
 import { Label } from "../formLabel";
 import { FooterInput } from "../footerInput";
@@ -42,7 +50,22 @@ export const FooterForm = () => {
 
         <Box mb="1rem">
           <Label name="Mensagem" />
-          <FooterInput placeholder="Digite sua mensagem" heigth="4.5rem" />
+          <Textarea
+            resize="none"
+            w="22.375rem"
+            h="5.5rem"
+            borderRadius="0.5rem"
+            backgroundColor="#DCE9E2"
+            border="0.604861px solid #00856F"
+            mt="0.25rem"
+            placeholder="Digite sua mensagem"
+            _placeholder={{
+              color: "rgba(73, 80, 87, 0.5)",
+              fontSize: "0.5rem",
+              lineHeight: "150%",
+              paddingTop: "0.75rem",
+            }}
+          />
         </Box>
 
         <Button

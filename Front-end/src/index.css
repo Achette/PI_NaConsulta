@@ -27,7 +27,8 @@ input::placeholder {
   font-size: 1rem;
 }
 
-input {
+input,
+textarea {
   line-height: 1.5rem;
   font-size: 1rem;
   padding-left: 1rem;
