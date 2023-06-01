@@ -11,6 +11,7 @@ import com.naconsulta.naconsulta.repositories.DoctorRepository;
 import com.naconsulta.naconsulta.repositories.UserRepository;
 import com.naconsulta.naconsulta.services.exceptions.DatabaseException;
 import com.naconsulta.naconsulta.services.exceptions.ResourceNotFoundException;
+import com.naconsulta.naconsulta.services.exceptions.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
+import java.time.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +38,24 @@ public class AppointmentService {
 
     @Autowired
     AuthService authService;
+
+    @PreAuthorize("hasAnyRole('DOCTOR', 'ADMIN')")
+    @Transactional(readOnly = true)
+    public List<AppointmentMinDto> getReport(String minDateStr, String maxDateStr, String name) {
+
+        LocalDate minDate = minDateStr.equals("") ? LocalDate.now() : LocalDate.parse(minDateStr);
+        LocalDate maxDate = maxDateStr.equals("") ? LocalDate.now().plusMonths(1) : LocalDate.parse(maxDateStr);
+
+        LocalDateTime minDateTime = LocalDateTime.of(minDate, LocalTime.MIN);
+        LocalDateTime maxDateTime = LocalDateTime.of(maxDate, LocalTime.MAX);
+
+        Instant minInstant = minDateTime.toInstant(ZoneOffset.UTC);
+        Instant maxInstant = maxDateTime.toInstant(ZoneOffset.UTC);
+
+        List<Appointment> list = appointmentRepository.searchAppointments(minInstant, maxInstant, name);
+
+        return list.stream().map(appointment -> new AppointmentMinDto(appointment)).collect(Collectors.toList());
+    }
 
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
@@ -72,12 +91,20 @@ public class AppointmentService {
     @PreAuthorize("hasAnyRole('DOCTOR')")
     @Transactional
     public void updateAppointment(Long id, AppointmentUpdateDto dto) {
-        User user = authService.authenticated();
-        Appointment appointment = appointmentRepository.getReferenceById(id);
-        appointment.setDiagnosis(dto.getDiagnosis());
-        appointment.setSymptom(dto.getSymptom());
-        appointmentRepository.save(appointment);
-        new AppointmentUpdateDto(appointment);
+        try {
+            authService.validateAppointmentDoctor(id);
+
+            Appointment appointment = appointmentRepository.getReferenceById(id);
+
+            if (appointment.checkUpdateDate(appointment.getDate())) {
+                throw new IllegalArgumentException("A data é posterior à data de atualização.");
+            }
+            appointment.setDiagnosis(dto.getDiagnosis());
+            appointment.setSymptom(dto.getSymptom());
+            appointmentRepository.save(appointment);
+        } catch (IllegalArgumentException e) {
+            throw new UnauthorizedException("Data de agendamento é posterior à data de atualização");
+        }
     }
 
     @Transactional(readOnly = true)

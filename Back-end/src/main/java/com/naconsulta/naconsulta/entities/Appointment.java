@@ -30,6 +30,12 @@ public class Appointment implements Serializable {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant createdAt;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant updatedAt;
+
     public Appointment() {
     }
 
@@ -90,6 +96,29 @@ public class Appointment implements Serializable {
         this.doctor = doctor;
     }
 
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = Instant.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = Instant.now();
+    }
+
+    public boolean checkUpdateDate(Instant date) {
+        Instant updated = Instant.now();
+        return date.compareTo(updated) >= 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -102,4 +131,3 @@ public class Appointment implements Serializable {
         return Objects.hash(getId());
     }
 }
-
