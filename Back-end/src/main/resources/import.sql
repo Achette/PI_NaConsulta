@@ -1,13 +1,13 @@
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Alex', 'Brown', 'masculino', 'alex@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Maria', 'Green', 'feminino', 'maria@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Arthur', 'Gray', 'masculino', 'arthur@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('John', 'Doe', 'masculino', 'john.doe@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Emma', 'Johnson', 'feminino', 'emma@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Michael', 'Smith', 'masculino', 'michael.smith@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Sophia', 'Brown', 'feminino', 'sophia.brown@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Daniel', 'Taylor', 'masculino', 'daniel.taylor@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Olivia', 'Johnson', 'feminino', 'olivia.johnson@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('William', 'Anderson', 'masculino', 'william.anderson@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('John', 'Doe', 'masculino', 'john@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Emma', 'Johnson', 'feminino', 'emma@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Michael', 'Smith', 'masculino', 'michael@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Sophia', 'Brown', 'feminino', 'sophia@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Daniel', 'Taylor', 'masculino', 'daniel@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Olivia', 'Johnson', 'feminino', 'olivia@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('William', 'Anderson', 'masculino', 'william@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 
 INSERT INTO tb_role (authority) VALUES ('ROLE_ADMIN');
 INSERT INTO tb_role (authority) VALUES ('ROLE_DOCTOR');
@@ -40,8 +40,8 @@ INSERT INTO tb_specialization (name) VALUES ('Nutrologia');
 INSERT INTO tb_state (name) VALUES ('São Paulo');
 INSERT INTO tb_state (name) VALUES ('Rio de Janeiro');
 
-INSERT INTO tb_city (name, state_id) VALUES ('São Paulo', 1)
-INSERT INTO tb_city (name, state_id) VALUES ('Rio de Janeiro', 2)
+INSERT INTO tb_city (name, state_id) VALUES ('São Paulo', 1);
+INSERT INTO tb_city (name, state_id) VALUES ('Rio de Janeiro', 2);
 
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Main Street', '123', 'Downtown', '12345', 'Apt 1B', 1);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Park Avenue', '456', 'Downson', '67890', 'Suite 5C', 1);
@@ -49,9 +49,24 @@ INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Oak Road', '987', 'Woodland', '09876', 'Apt 3A', 2);
 
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Alex', 'Brown', 450.00, true, 4.9, 1, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Maria', 'Green', 480.00, false, 5.0, 2, 2);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Arthur', 'Gray', 380.00, true, 4.9, 3, 3);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('John', 'Doe', 420.00, false, 4.8, 4, 4);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('John', 'Smith', 400.00, false, 4.5, 1, 2);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Maria', 'Garcia', 500.00, true, 4.8, 1, 3);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Robert', 'Johnson', 550.00, true, 4.7, 1, 4);
+
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Maria', 'Green', 480.00, false, 5.0, 2, 1);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('John', 'Brown', 450.00, true, 4.9, 2, 2);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Emily', 'Johnson', 500.00, true, 4.8, 2, 3);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Michael', 'Smith', 550.00, true, 4.7, 2, 4);
+
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Arthur', 'Gray', 380.00, true, 4.9, 3, 1);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Robert', 'Johnson', 400.00, true, 4.5, 3, 2);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Emily', 'Davis', 420.00, false, 4.8, 3, 3);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Daniel', 'Wilson', 450.00, true, 4.7, 3, 4);
+
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('John', 'Doe', 420.00, false, 4.8, 4, 1);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Andrew', 'White', 420.00, false, 4.8, 4, 2);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Jessica', 'Parker', 380.00, true, 4.9, 4, 3);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Benjamin', 'Reed', 450.00, true, 4.7, 4, 4);
 
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-01-01T14:45:00Z', 'fratura no tornozelo', 'dor intensa e inchaço no tornozelo após uma queda', 4, 1, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-02-02T10:30:00Z', 'lesão no ombro', 'dor e dificuldade de movimentação no ombro após atividade física intensa', 8, 1, NOW());
