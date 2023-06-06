@@ -1,9 +1,24 @@
---ADMINS, DOCTORS, USERS
---TEST alex user 1
+create table tb_address (id  bigserial not null, neighborhood varchar(255), number varchar(255), public_place varchar(255), room varchar(255), zip_code int4, city_id int8, primary key (id));
+create table tb_appointment (id  bigserial not null, created_at TIMESTAMP WITHOUT TIME ZONE, date TIMESTAMP WITHOUT TIME ZONE, diagnosis TEXT, symptom varchar(255), updated_at TIMESTAMP WITHOUT TIME ZONE, doctor_id int8, user_id int8, primary key (id));
+create table tb_city (id  bigserial not null, name varchar(255), state_id int8, primary key (id));
+create table tb_doctor (id  bigserial not null, appointment_price float8, evaluation float8, first_name varchar(255), insurance boolean not null, last_name varchar(255), address_id int8, specialization_id int8, primary key (id));
+create table tb_role (id  bigserial not null, authority varchar(255), primary key (id));
+create table tb_specialization (id  bigserial not null, name varchar(255), primary key (id));
+create table tb_state (id  bigserial not null, name varchar(255), primary key (id));
+create table tb_telephone (id  bigserial not null, telephone varchar(255), user_id int8, primary key (id));
+create table tb_user (id  bigserial not null, email varchar(255), first_name varchar(255), gender varchar(255), last_name varchar(255), password varchar(255), primary key (id));
+create table tb_user_role (user_id int8 not null, role_id int8 not null, primary key (user_id, role_id));
+alter table tb_user add constraint UK_4vih17mube9j7cqyjlfbcrk4m unique (email);
+alter table tb_address add constraint FKpm4x3qy2wea2p4ea7bs217nr5 foreign key (city_id) references tb_city;
+alter table tb_appointment add constraint FKeulki5iinxnu0o8j6pofy0qk foreign key (doctor_id) references tb_doctor;
+alter table tb_appointment add constraint FKfvpre4c6rxve7rmofra31241c foreign key (user_id) references tb_user;
+alter table tb_city add constraint FK1rn7oty4mwqviyw8vk67crapo foreign key (state_id) references tb_state;
+alter table tb_doctor add constraint FKor0e3sgabt00ttf4mv7la7xbf foreign key (address_id) references tb_address;
+alter table tb_doctor add constraint FKbigaou6y6ec18brgr6rw7yajn foreign key (specialization_id) references tb_specialization;
+alter table tb_telephone add constraint FKgt3c7uoa3oycsc1nlx07mv4ff foreign key (user_id) references tb_user;
+alter table tb_user_role add constraint FKea2ootw6b6bb0xt3ptl28bymv foreign key (role_id) references tb_role;
+alter table tb_user_role add constraint FK7vn3h53d0tqdimm8cp45gc0kl foreign key (user_id) references tb_user;
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Alex', 'Brown', 'masculino', 'alex@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-
---DOCTORS, USERS
---TEST ana user 2
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Ana', 'Green', 'feminino', 'ana@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Arthur', 'Gray', 'masculino', 'arthur@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Leonardo', 'Doe', 'masculino', 'leo@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
@@ -19,23 +34,16 @@ INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Da
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Andrew', 'White', 'masculino', 'andrew.w@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Jessica', 'Parker', 'feminino', 'jessica.p@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Benjamin', 'Reed',  'masculino', 'benjamin.r@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
---USERS
---TEST emma user 17
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Emma', 'Johnson', 'feminino', 'emma@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Michael', 'Smith', 'masculino', 'michael@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Sophia', 'Brown', 'feminino', 'sophia@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Daniel', 'Taylor', 'masculino', 'daniel@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Olivia', 'Johnson', 'feminino', 'olivia@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('William', 'Anderson', 'masculino', 'william@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-
 INSERT INTO tb_role (authority) VALUES ('ROLE_ADMIN');
 INSERT INTO tb_role (authority) VALUES ('ROLE_DOCTOR');
 INSERT INTO tb_role (authority) VALUES ('ROLE_USER');
-
---ADMINS
 INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 1);
-
---DOCTORS, USERS
 INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 2);
@@ -52,7 +60,6 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (13, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (14, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (15, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (16, 2);
---USERS
 INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 3);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 3);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 3);
@@ -75,44 +82,34 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (19, 3);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (20, 3);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (21, 3);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (22, 3);
-
 INSERT INTO tb_specialization (name) VALUES ('Ortopedista');
 INSERT INTO tb_specialization (name) VALUES ('Oftalmologia');
 INSERT INTO tb_specialization (name) VALUES ('Psiquiatria');
 INSERT INTO tb_specialization (name) VALUES ('Nutrologia');
-
 INSERT INTO tb_state (name) VALUES ('São Paulo');
 INSERT INTO tb_state (name) VALUES ('Rio de Janeiro');
-
 INSERT INTO tb_city (name, state_id) VALUES ('São Paulo', 1);
 INSERT INTO tb_city (name, state_id) VALUES ('Rio de Janeiro', 2);
-
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Main Street', '123', 'Downtown', '12345', 'Apt 1B', 1);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Park Avenue', '456', 'Downson', '67890', 'Suite 5C', 1);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Elm Street', '789', 'Suburbia', '54321', 'Unit 2D', 2);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Oak Road', '987', 'Woodland', '09876', 'Apt 3A', 2);
-
-
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Alex', 'Brown', 450.00, true, 4.9, 1, 1);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Ana', 'Green', 480.00, false, 5.0, 2, 2);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('John', 'Smith', 400.00, false, 4.5, 3, 3);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Maria', 'Garcia', 500.00, true, 4.8, 4, 4);
-
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Robert', 'Johnson', 550.00, true, 4.7, 1, 1);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Cris', 'Brown', 450.00, true, 4.9, 2, 2);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Emily', 'Johnson', 500.00, true, 4.8, 3, 3);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Michael', 'Smith', 550.00, true, 4.7, 4, 4);
-
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Arthur', 'Gray', 380.00, true, 4.9, 1, 1);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Alex', 'Jasmin', 400.00, true, 4.5, 2, 2);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Doroty', 'Davis', 420.00, false, 4.8, 3, 3);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Daniel', 'Wilson', 450.00, true, 4.7, 4, 4);
-
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Leonardo', 'Doe', 420.00, false, 4.8, 1, 1);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Andrew', 'White', 420.00, false, 4.8, 2, 2);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Jessica', 'Parker', 380.00, true, 4.9, 3, 3);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Benjamin', 'Reed', 450.00, true, 4.7, 4, 4);
-
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-01-01T14:45:00Z', 'fratura no tornozelo', 'dor intensa e inchaço no tornozelo após uma queda', 17, 1, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-02-02T10:30:00Z', 'lesão no ombro', 'dor e dificuldade de movimentação no ombro após atividade física intensa', 2, 5, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-03-03T14:45:00Z', 'dor nas articulações', 'dor no joelho', 5, 9, NOW());
@@ -121,7 +118,6 @@ INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, create
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-06-06T14:45:00Z', 'dor nas articulações', 'dor no joelho', 9, 5, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2024-06-07T11:00:00Z', '', '', 8, 9, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2024-07-08T16:20:00Z', '', '', 5, 13, NOW());
-
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-01-09T14:45:00Z', 'dor nos olhos', 'vermelhidão e irritação nos olhos', 11, 2, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-02-10T10:30:00Z', 'visão turva', 'dificuldade em enxergar claramente', 5, 6, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-03-11T14:45:00Z', 'exame de rotina', 'visão embaçada e dificuldade de enxergar à noite', 4, 10, NOW());
@@ -130,7 +126,6 @@ INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, create
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-06-14T11:00:00Z', 'tratamento de glaucoma', 'pressão ocular elevada e perda gradual de visão', 17, 6, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2024-06-15T11:00:00Z', '', '', 4, 10, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2024-07-16T16:20:00Z', '', '', 9, 14, NOW());
-
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-01-17T14:45:00Z', 'ansiedade', 'sintomas de ansiedade, como nervosismo e preocupação excessiva', 15, 3, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-02-18T10:30:00Z', 'depressão', 'sintomas de depressão, como tristeza profunda e falta de energia', 20, 7, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-03-19T14:45:00Z', 'depressão', 'tristeza persistente, perda de interesse e baixa energia', 16, 11, NOW());
@@ -139,7 +134,6 @@ INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, create
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-06-22T11:00:00Z', 'transtorno de estresse pós-traumático', 'flashbacks, pesadelos e evitação de gatilhos traumáticos', 1, 7, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2024-06-23T11:00:00Z', '', '', 12, 11, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2024-07-24T16:20:00Z', '', '', 10, 15, NOW());
-
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-01-25T14:45:00Z', 'dificuldade para emagrecer', 'dificuldade em perder peso mesmo com dieta e exercícios', 5, 4, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-02-26T10:30:00Z', 'intolerância alimentar', 'sintomas de intolerância a certos alimentos, como inchaço e desconforto abdominal', 13, 8, NOW());
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id, created_At) VALUES (TIMESTAMP WITH TIME ZONE '2023-03-27T14:45:00Z', 'deficiência de vitamina D', 'fraqueza muscular e dores ósseas', 3, 12, NOW());
