@@ -75,6 +75,10 @@ public class AppointmentService {
     public AppointmentDto findById(Long id) {
         try {
             authService.validateAppointmentAccess(id);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 236b4fb0310752170d0ed2ad1a93b2b816e31daf
             Appointment appointment = appointmentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
             return new AppointmentDto(appointment);
         } catch (EntityNotFoundException e) {

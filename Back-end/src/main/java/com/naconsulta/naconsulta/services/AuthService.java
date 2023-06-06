@@ -50,11 +50,17 @@ public class AuthService {
         }
     }
 
-    public void validateAppointmentSelfOrAdmin(Long appointmentId) {
+    public void validateAppointmentAccess(Long appointmentId) {
         User user = authenticated();
         Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
 
-        if (!user.getId().equals(appointment.getUser().getId()) && !user.hasRole("ROLE_ADMIN") && !user.getId().equals(appointment.getDoctor().getId())) {
+        if (!user.hasRole("ROLE_ADMIN")) {
+            if (user.hasRole("ROLE_DOCTOR") && user.getId().equals(appointment.getDoctor().getId())) {
+                return;
+            } else if (user.hasRole("ROLE_USER") && user.getId().equals(appointment.getUser().getId())) {
+                return;
+            }
+
             throw new ForbiddenException("Access denied!");
         }
     }
