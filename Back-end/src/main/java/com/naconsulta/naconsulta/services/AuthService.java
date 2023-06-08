@@ -35,6 +35,7 @@ public class AuthService {
         }
     }
 
+    @Transactional(readOnly = true)
     public void validateSelf(Long userId) {
         User user = authenticated();
         if (!user.getId().equals(userId)) {
@@ -42,6 +43,7 @@ public class AuthService {
         }
     }
 
+    @Transactional(readOnly = true)
     public void validateSelfOrAdmin(Long userId) {
         User user = authenticated();
         System.out.println("E-mail do usuário autenticado: " + user.getEmail());
@@ -50,6 +52,8 @@ public class AuthService {
         }
     }
 
+    //não funciona no perfil dev apenas no perfil test e prod
+    @Transactional(readOnly = true)
     public void validateAppointmentAccess(Long appointmentId) {
         User user = authenticated();
         Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
@@ -65,19 +69,7 @@ public class AuthService {
         }
     }
 
-    public void validateAppointmentAccess(Long appointmentId) {
-        User user = authenticated();
-        Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
-        Doctor doctor = doctorRepository.getReferenceById(appointment.getId());
-        if (
-                !user.getId().equals(appointment.getUser().getId())
-                        && !doctor.getId().equals(appointment.getDoctor().getId())
-                        && !user.hasRole("ROLE_DOCTOR")
-                        && !user.hasRole("ROLE_ADMIN")) {
-            throw new ForbiddenException("Access denied!");
-        }
-    }
-
+    @Transactional(readOnly = true)
     public void validateAppointmentDoctor(Long appointmentId) {
         User user = authenticated();
         Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
@@ -87,6 +79,7 @@ public class AuthService {
         }
     }
 
+    @Transactional(readOnly = true)
     public void validateDeleteAccess(Long appointmentId) {
         User user = authenticated();
         Appointment appointment = appointmentRepository.findById(appointmentId).orElse(null);
