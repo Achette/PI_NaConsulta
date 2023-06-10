@@ -1,4 +1,5 @@
-import { Box, VStack, Text, Image, Flex } from "@chakra-ui/react";
+import { Box, VStack, Text, Image, Flex, Icon } from "@chakra-ui/react";
+import { MdLocationOn } from "react-icons/md";
 import Img from "../../assets/img/IconDoc.svg"
 
 export type DoctorInfoProps = {
@@ -12,17 +13,26 @@ export type DoctorInfoProps = {
 };
 export const DoctorInfo = ({ name, specialty, address, neighborhood, city, cep, room } : DoctorInfoProps) => {
   return (
-    <VStack>
-      <Flex justifyContent="center" alignItems="center">
+    <VStack color="#004238" h="100%" alignItems="flex-start" justifyContent="space-between">
+      <Flex justifyContent="center" alignItems="center" >
         <Image src={Img} alt="Perfil Photo" />
-        <Box display="flex" flexDirection="column" color="#004238" ml="0.8rem">
+        <Box display="flex" flexDirection="column" ml="0.8rem">
           <Text fontSize="1.5rem" fontWeight="400" mb="0.25rem">{name}</Text>
-          <Text fontSize="1.5rem" fontWeight="300" >{specialty}</Text>
+          <Text fontSize="1.5rem" fontWeight="400" >{specialty}</Text>
         </Box>
       </Flex>
-      <Box>
-
-      </Box>
+      <VStack fontSize="1rem" fontWeight="400" lineHeight="1rem" >
+        <Flex >
+          <Icon as={MdLocationOn} mt="0.2rem" mr="1rem"></Icon>
+          <VStack alignItems="flex-start">
+            <Text>{ address }</Text>
+            <Text>{ neighborhood }</Text>
+            <Text>{ city }</Text>
+            <Text>{ cep }</Text>
+            <Text>{ room }</Text>
+          </VStack>
+        </Flex>
+      </VStack>
     </VStack>
   );
 };
