@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LandingPage, UserAccess } from "./routes";
 import { Login } from "./routes/users/login";
 import { Signin } from "./routes/users/signin";
+import { SearchDoctors } from "./routes/searchDoctors";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route index element={<Login />} />
           <Route path="/access/signin" element={<Signin />} />
         </Route>
+        <Route path="/search" element={<SearchDoctors/>}/>
       </Routes>
     </BrowserRouter>
   );
