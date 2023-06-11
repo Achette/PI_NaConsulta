@@ -1,9 +1,11 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 
 export const UserInfo = () => {
 
     return (
-        <Box>Este é o User Info</Box>
+        <Flex w="37.5rem" justifyContent="space-between">
+        Este é o User Info Component
+      </Flex>
     )
 }

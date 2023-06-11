@@ -1,9 +1,9 @@
 import { Flex } from "@chakra-ui/react";
-import { AppointmentCard, AppointmentInfo } from "../../../../components";
+import { AppointmentInfo } from "../../../../components";
 
 export const Info = () => {
   return (
-    <Flex w="100%" justifyContent="space-between">
+    <Flex w="37.5rem" justifyContent="space-between">
       <AppointmentInfo />
     </Flex>
   );
