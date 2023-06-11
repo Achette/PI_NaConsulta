@@ -12,7 +12,7 @@
 
 # Checklist
 
--   [ ] Atualizou a branch com a MAIN? Lembre-se de atualizar antes de mergear a branch
+-   [ ] Atualizou a branch com a DEVELOP? Lembre-se de atualizar antes de mergear a branch
 
 # OPCIONAL
 
