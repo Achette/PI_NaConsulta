@@ -1,2 +1,6 @@
 export * from './landingPage/index'
 export * from './users/index'
+export * from './users/login'
+export * from './users/signin'
+export * from './searchDoctors/index'
+export * from './schedule/index'
