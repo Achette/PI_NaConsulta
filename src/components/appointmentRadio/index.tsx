@@ -2,7 +2,7 @@ import { Box, Flex, FormLabel, Stack } from "@chakra-ui/react";
 
 export const AppointmentInputRadio = () => {
   return (
-    <>
+    <Box>
       <FormLabel color="#004238" fontSize="1rem" lineHeight="1.5rem">
         É a sua primeira consulta com este especialista? *
       </FormLabel>
@@ -33,6 +33,6 @@ export const AppointmentInputRadio = () => {
           </Flex>
         </Stack>
       </fieldset>
-    </>
+    </Box>
   );
 };

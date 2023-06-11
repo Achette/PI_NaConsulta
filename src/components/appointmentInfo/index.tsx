@@ -1,4 +1,4 @@
-import { FormLabel, Heading, Radio, RadioGroup, Stack, VStack } from "@chakra-ui/react";
+import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
 import { AppointmentInput } from "../appointmentInput";
 import { AppointmentInputRadio } from "../appointmentRadio";
 
@@ -7,8 +7,8 @@ export const AppointmentInfo = () => {
     <VStack
       w="37.5rem"
       h="35.5rem"
-      border="1px solid red"
       alignItems="flex-start"
+      justifyContent="space-between"
     >
       <Heading
         as="h2"
@@ -32,6 +32,25 @@ export const AppointmentInfo = () => {
       />
 
       <AppointmentInputRadio />
+
+      <Button
+        w="100%"
+        h="3.5rem"
+        bgColor="#004238"
+        borderRadius="0.5rem"
+        color="#FFF"
+        fontWeight={500}
+        fontSize="1rem"
+        lineHeight="1.5rem"
+      >
+        Continuar
+      </Button>
+
+      <Box w="100%">
+        <Text color="#004238" textAlign="center">
+          * Campo obrigatório
+        </Text>
+      </Box>
     </VStack>
   );
 };

@@ -16,7 +16,16 @@ export const AppointmentInput = ({ label, value }: AppointmentInputProps) => {
       >
         {label}
       </FormLabel>
-      <Input value={value} w="100%" h="3.5rem" bgColor="#F4F4F4" color="#004238" border="0.9px solid #004238" borderRadius="0.5rem" disabled />
+      <Input
+        value={value}
+        w="100%"
+        h="3.5rem"
+        bgColor="#F4F4F4"
+        color="#004238"
+        border="0.9px solid #004238"
+        borderRadius="0.5rem"
+        disabled
+      />
     </Box>
   );
 };
