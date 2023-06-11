@@ -1,8 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LandingPage, UserAccess } from "./routes";
-import { Login } from "./routes/users/login";
-import { Signin } from "./routes/users/signin";
-import { SearchDoctors } from "./routes/searchDoctors";
+import { LandingPage, UserAccess, Login, Signin, SearchDoctors, Schedule } from "./routes";
 
 function App() {
   return (
@@ -14,6 +11,7 @@ function App() {
           <Route path="/access/signin" element={<Signin />} />
         </Route>
         <Route path="/search" element={<SearchDoctors/>}/>
+        <Route path="/schedule" element={<Schedule/>}/>
       </Routes>
     </BrowserRouter>
   );
