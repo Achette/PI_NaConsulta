@@ -1,5 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LandingPage, UserAccess, Login, Signin, SearchDoctors, Schedule } from "./routes";
+import {
+  LandingPage,
+  UserAccess,
+  Login,
+  Signin,
+  SearchDoctors,
+  Schedule,
+  Appointment,
+} from "./routes";
 
 function App() {
   return (
@@ -10,8 +18,10 @@ function App() {
           <Route index element={<Login />} />
           <Route path="/access/signin" element={<Signin />} />
         </Route>
-        <Route path="/search" element={<SearchDoctors/>}/>
-        <Route path="/schedule" element={<Schedule/>}/>
+        <Route path="/search" element={<SearchDoctors />} />
+        <Route path="/schedule" element={<Schedule />}>
+          <Route index element={<Appointment />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
