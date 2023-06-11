@@ -4,12 +4,11 @@ import { AppointmentInputRadio } from "../appointmentRadio";
 import { useNavigate } from "react-router-dom";
 
 export const AppointmentInfo = () => {
-
-  const navigate= useNavigate()
+  const navigate = useNavigate();
 
   const handleContinueAppointment = () => {
-    navigate('/schedule/userinfo')
-  }
+    navigate("/schedule/userinfo");
+  };
   return (
     <VStack
       w="37.5rem"
@@ -38,7 +37,12 @@ export const AppointmentInfo = () => {
         value="Este especialista não aceita convênio médico"
       />
 
-      <AppointmentInputRadio />
+      <AppointmentInputRadio
+        label="É sua primeira consulta com este especialista? *"
+        name="option"
+        value1="sim"
+        value2="não"
+      />
 
       <Button
         w="100%"
