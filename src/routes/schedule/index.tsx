@@ -1,7 +1,6 @@
 
 import { Divider, Flex, Image } from "@chakra-ui/react"
 import { Outlet } from "react-router-dom"
-import { AppointmentCard } from "../../components"
 import Logo from "../../assets/img/Logo_light_green.png";
 
 
