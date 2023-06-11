@@ -1,8 +1,22 @@
-import { DoctorCard } from "../../components"
-
+import { VStack } from "@chakra-ui/react"
+import {
+  DoctorCard,
+  Footer,
+  HeaderSearchDoctor,
+  SearchFilters,
+} from "../../components"
 
 export const SearchDoctors = () => {
-    return (
+  return (
+    <>
+      <HeaderSearchDoctor />
+      <VStack mb="1rem">
+        <SearchFilters />
         <DoctorCard />
-    )
+        <DoctorCard />
+        <DoctorCard />
+      </VStack>
+      <Footer />
+    </>
+  )
 }
