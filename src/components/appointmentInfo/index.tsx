@@ -1,8 +1,15 @@
 import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
 import { AppointmentInput } from "../appointmentInput";
 import { AppointmentInputRadio } from "../appointmentRadio";
+import { useNavigate } from "react-router-dom";
 
 export const AppointmentInfo = () => {
+
+  const navigate= useNavigate()
+
+  const handleContinueAppointment = () => {
+    navigate('/schedule/userinfo')
+  }
   return (
     <VStack
       w="37.5rem"
@@ -42,6 +49,7 @@ export const AppointmentInfo = () => {
         fontWeight={500}
         fontSize="1rem"
         lineHeight="1.5rem"
+        onClick={() => handleContinueAppointment()}
       >
         Continuar
       </Button>

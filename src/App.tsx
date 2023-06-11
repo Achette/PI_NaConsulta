@@ -7,6 +7,8 @@ import {
   SearchDoctors,
   Schedule,
   Appointment,
+  UserInfo,
+  Info,
 } from "./routes";
 
 function App() {
@@ -20,7 +22,10 @@ function App() {
         </Route>
         <Route path="/search" element={<SearchDoctors />} />
         <Route path="/schedule" element={<Schedule />}>
-          <Route index element={<Appointment />} />
+          <Route element={<Appointment />}>
+            <Route index element={<Info />} />
+            <Route path="/schedule/userinfo" element={<UserInfo />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
