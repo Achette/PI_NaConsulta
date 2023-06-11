@@ -15,3 +15,5 @@ export * from "./headerSearchDoctor/index"
 export * from "./searchFilters/index"
 export * from "./appointmentCard"
 export * from './appointmentInfo/index'
+export * from './appointmentInput/index'
+export * from './appointmentRadio/index'
