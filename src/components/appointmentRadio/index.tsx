@@ -1,34 +1,46 @@
 import { Box, Flex, FormLabel, Stack } from "@chakra-ui/react";
 
-export const AppointmentInputRadio = () => {
+type AppointmentRadioProps = {
+  label: string;
+  name: string;
+  value1: string;
+  value2: string;
+};
+
+export const AppointmentInputRadio = ({
+  label,
+  name,
+  value1,
+  value2,
+}: AppointmentRadioProps) => {
   return (
     <Box>
       <FormLabel color="#004238" fontSize="1rem" lineHeight="1.5rem">
-        É a sua primeira consulta com este especialista? *
+        {label}
       </FormLabel>
 
       <fieldset>
         <Stack spacing={5} direction="row" gap="1.5rem">
           <Flex>
-            <input type="radio" value="sim" id="sim" name="option" />
+            <input type="radio" value={value1} id={value1} name={name} />
             <FormLabel
               color="#004238"
               fontSize="1rem"
               lineHeight="1.5rem"
               ml="0.5rem"
             >
-              Sim
+              {value1}
             </FormLabel>
           </Flex>
           <Flex>
-            <input type="radio" value="nao" id="nao" name="option" />
+            <input type="radio" value={value2} id={value2} name={name} />
             <FormLabel
               color="#004238"
               fontSize="1rem"
               lineHeight="1.5rem"
               ml="0.5rem"
             >
-              Não
+              {value2}
             </FormLabel>
           </Flex>
         </Stack>

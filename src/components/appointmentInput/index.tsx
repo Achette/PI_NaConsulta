@@ -1,11 +1,13 @@
 import { Box, FormLabel, Input } from "@chakra-ui/react";
 
 type AppointmentInputProps = {
-  label: string;
-  value: string;
+  label?: string;
+  value?: string;
+  placeholder?: string;
+  type?: string
 };
 
-export const AppointmentInput = ({ label, value }: AppointmentInputProps) => {
+export const AppointmentInput = ({ label, value, placeholder, type = 'text' }: AppointmentInputProps) => {
   return (
     <Box w="100%">
       <FormLabel
@@ -24,7 +26,9 @@ export const AppointmentInput = ({ label, value }: AppointmentInputProps) => {
         color="#004238"
         border="0.9px solid #004238"
         borderRadius="0.5rem"
-        disabled
+        disabled={placeholder ? false : true}
+        placeholder={placeholder ? placeholder : ''}
+        type={type}
       />
     </Box>
   );
