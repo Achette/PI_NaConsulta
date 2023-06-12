@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://na-consulta-igor-achete-prod.up.railway.app'
