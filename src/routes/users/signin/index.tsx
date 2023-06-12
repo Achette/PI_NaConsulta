@@ -9,13 +9,11 @@ import {
   Link,
   Text,
   VStack,
-  useToast,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { AppleButton, FacebookButton, GoogleButton } from "../../../components";
 import { UserApi } from "../../../services/user-api";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 export const Signin = () => {
   const [newUserData, setNewUserData] = React.useState({
@@ -24,26 +22,10 @@ export const Signin = () => {
     password: "",
   });
 
-  const [auth, setAuth] = React.useState(false);
-
-  const notify = toast("Usuário Cadastrado");
-
   const navigate = useNavigate();
 
   const handleCreateNewUser = React.useCallback(async () => {
-/*     try {
-    
-
-      const response = await UserApi.newUser(dataUser);
-      const status = await response.status;
-      const data = await response.data;
-
-      
-      navigate("/");
-      console.log(status, data);
-    } catch (e) {} */
-    
-    const dataUser = {
+    const user = {
       firstName: "default",
       lastName: "default",
       gender: "default",
@@ -51,14 +33,25 @@ export const Signin = () => {
       password: newUserData.password,
       roles: [{ id: 1 }],
     };
-    
-    UserApi.newUser(dataUser).then((res) => {
-      
-      <ToastContainer />;
-    });
-  }, [newUserData.password, newUserData.username]);
 
+    try {
+      await UserApi.newUser(user);
 
+      toast.success("Usuário cadastrado com sucesso!", {
+        position: "bottom-right",
+        theme: "colored",
+      });
+
+      navigate("/access");
+    } catch (e: any) {
+      const { errors } = e.response.data;
+
+      toast.error(`${errors[0].message}`, {
+        position: "bottom-right",
+        theme: "colored",
+      });
+    }
+  }, [navigate, newUserData.password, newUserData.username]);
 
   const handleGoToLogin = () => {
     navigate("/access");
