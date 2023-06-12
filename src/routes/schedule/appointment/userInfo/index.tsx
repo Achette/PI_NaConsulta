@@ -12,8 +12,15 @@ import {
   AppointmentInput,
   AppointmentInputRadio,
 } from "../../../../components";
+import { useNavigate } from "react-router-dom";
 
 export const UserInfo = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/schedule/userinfo/completedinfo");
+  };
+  
   return (
     <Flex
       w="37.5rem"
@@ -107,6 +114,7 @@ export const UserInfo = () => {
           fontWeight={500}
           fontSize="1rem"
           lineHeight="1.5rem"
+          onClick={() => handleNavigate()}
         >
           Marcar Consulta
         </Button>

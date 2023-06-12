@@ -9,6 +9,7 @@ import {
   Appointment,
   UserInfo,
   Info,
+  CompletedInfo,
 } from "./routes";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/schedule/userinfo" element={<UserInfo />} />
           </Route>
         </Route>
+            <Route path="/schedule/userinfo/completedinfo" element={<CompletedInfo />}></Route>
       </Routes>
     </BrowserRouter>
   );
