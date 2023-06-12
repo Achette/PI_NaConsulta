@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Button,
@@ -8,12 +9,56 @@ import {
   Link,
   Text,
   VStack,
+  useToast,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { AppleButton, FacebookButton, GoogleButton } from "../../../components";
+import { UserApi } from "../../../services/user-api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Signin = () => {
+  const [newUserData, setNewUserData] = React.useState({
+    username: "",
+    confirmUsername: "",
+    password: "",
+  });
+
+  const [auth, setAuth] = React.useState(false);
+
+  const notify = toast("Usuário Cadastrado");
+
   const navigate = useNavigate();
+
+  const handleCreateNewUser = React.useCallback(async () => {
+/*     try {
+    
+
+      const response = await UserApi.newUser(dataUser);
+      const status = await response.status;
+      const data = await response.data;
+
+      
+      navigate("/");
+      console.log(status, data);
+    } catch (e) {} */
+    
+    const dataUser = {
+      firstName: "default",
+      lastName: "default",
+      gender: "default",
+      email: newUserData.username,
+      password: newUserData.password,
+      roles: [{ id: 1 }],
+    };
+    
+    UserApi.newUser(dataUser).then((res) => {
+      
+      <ToastContainer />;
+    });
+  }, [newUserData.password, newUserData.username]);
+
+
 
   const handleGoToLogin = () => {
     navigate("/access");
@@ -57,6 +102,10 @@ export const Signin = () => {
             bgColor="#F4F4F4"
             border="0.9px solid #004238"
             borderRadius="0.5rem"
+            value={newUserData.username}
+            onChange={(e) =>
+              setNewUserData({ ...newUserData, username: e.target.value })
+            }
           />
 
           <Input
@@ -67,6 +116,13 @@ export const Signin = () => {
             bgColor="#F4F4F4"
             border="0.9px solid #004238"
             borderRadius="0.5rem"
+            value={newUserData.confirmUsername}
+            onChange={(e) =>
+              setNewUserData({
+                ...newUserData,
+                confirmUsername: e.target.value,
+              })
+            }
           />
 
           <Input
@@ -77,6 +133,10 @@ export const Signin = () => {
             bgColor="#F4F4F4"
             border="0.9px solid #004238"
             borderRadius="0.5rem"
+            value={newUserData.password}
+            onChange={(e) =>
+              setNewUserData({ ...newUserData, password: e.target.value })
+            }
           />
 
           <Button
@@ -89,6 +149,7 @@ export const Signin = () => {
             fontWeight={500}
             lineHeight="1.5rem"
             cursor="pointer"
+            onClick={() => handleCreateNewUser()}
           >
             Cadastrar
           </Button>
