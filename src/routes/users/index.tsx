@@ -1,6 +1,6 @@
 import { Divider, Flex, Image } from "@chakra-ui/react";
-import Logo from "../../assets/img/Logo_light_green.png";
 import { Outlet } from "react-router-dom";
+import Logo from "../../assets/img/Logo_light_green.png";
 
 export const UserAccess = () => {
   return (

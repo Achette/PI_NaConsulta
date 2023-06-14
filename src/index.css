@@ -34,6 +34,27 @@ textarea {
   padding-left: 1rem;
 }
 
-input:focus {
+input:focus,
+select {
   color: #004238;
+}
+
+select {
+  border: none;
+  border-radius: 0.5rem;
+  height: 3.5rem;
+  background-color: #f7f9f9;
+  padding: 1rem 1rem 1rem 0rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+fieldset {
+  border: none;
+}
+
+#checkbox {
+  margin-top: 0.25rem;
+  height: 1rem;
+  width: 1rem;
 }
