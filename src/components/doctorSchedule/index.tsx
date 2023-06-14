@@ -11,8 +11,14 @@ import {
   Tr,
 } from "@chakra-ui/react"
 import { MdPlayCircle } from "react-icons/md"
+import { useNavigate } from "react-router-dom"
 
 export const DoctorSchedule = () => {
+  const navigate = useNavigate()
+
+  const handleContinueAppointment = () => {
+    navigate("/Schedule")
+  }
   return (
     //w="29.77rem" h="13.125rem"
     <Box w="100%" mt="14px">
@@ -46,25 +52,49 @@ export const DoctorSchedule = () => {
             </Tr>
             <Tr w="100%">
               <Td textAlign="center">-</Td>
-              <Td textAlign="center">10:00</Td>
+              <Td
+                onClick={() => handleContinueAppointment()}
+                cursor="pointer"
+                textAlign="center"
+              >
+                10:00
+              </Td>
               <Td textAlign="center">-</Td>
               <Td textAlign="center">-</Td>
             </Tr>
             <Tr>
               <Td textAlign="center">-</Td>
-              <Td textAlign="center">12:00</Td>
+              <Td
+                onClick={() => handleContinueAppointment()}
+                cursor="pointer"
+                textAlign="center"
+              >
+                12:00
+              </Td>
               <Td textAlign="center">-</Td>
               <Td textAlign="center">-</Td>
             </Tr>
             <Tr>
               <Td textAlign="center">-</Td>
-              <Td textAlign="center">13:00</Td>
+              <Td
+                onClick={() => handleContinueAppointment()}
+                cursor="pointer"
+                textAlign="center"
+              >
+                13:00
+              </Td>
               <Td textAlign="center">-</Td>
               <Td textAlign="center">-</Td>
             </Tr>
             <Tr>
               <Td textAlign="center">-</Td>
-              <Td textAlign="center">15:00</Td>
+              <Td
+                onClick={() => handleContinueAppointment()}
+                cursor="pointer"
+                textAlign="center"
+              >
+                15:00
+              </Td>
               <Td textAlign="center">-</Td>
               <Td textAlign="center">-</Td>
             </Tr>
