@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { AppleButton, FacebookButton, GoogleButton } from "../../../components";
 import * as authService from "../../../services/auth-service";
+import { toast } from "react-toastify";
 
 export const Login = () => {
   const [user, setUser] = React.useState({ username: "", password: "" });
@@ -21,8 +22,22 @@ export const Login = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    authService.loginRequest(user)
-    .then(res => console.log(res))
+    authService
+      .loginRequest(user)
+      .then((res) => {
+        toast.success(`Bem vindo ${user.username}`, {
+          position: "bottom-right",
+          theme: "colored",
+        });
+
+        navigate('/search')
+      })
+      .catch((e) => {
+        toast.error("Usuário ou senha incorretos. Tente novamente!", {
+          position: "bottom-right",
+          theme: "colored",
+        });
+      });
   };
 
   const handleGoToSignin = () => {
