@@ -20,7 +20,7 @@ export const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     authService
       .loginRequest(user)
@@ -30,7 +30,7 @@ export const Login = () => {
           theme: "colored",
         });
 
-        navigate('/search')
+        navigate("/search");
       })
       .catch((e) => {
         toast.error("Usuário ou senha incorretos. Tente novamente!", {
