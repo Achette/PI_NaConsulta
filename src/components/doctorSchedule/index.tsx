@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   Icon,
   Table,
   TableContainer,
@@ -13,65 +14,59 @@ import { MdPlayCircle } from "react-icons/md"
 
 export const DoctorSchedule = () => {
   return (
-    <Box w="29.77rem" h="13.125rem" border="1px solid red">
-      <Icon as={MdPlayCircle} transform="rotate(180deg)"></Icon>
-      <Icon as={MdPlayCircle}></Icon>
+    //w="29.77rem" h="13.125rem"
+    <Box w="100%" mt="14px">
+      <Flex flexDirection="row" justifyContent="space-between">
+        <Icon as={MdPlayCircle} transform="rotate(180deg)"></Icon>
+        <Icon as={MdPlayCircle}></Icon>
+      </Flex>
       <TableContainer
         w="100%"
         h="100%"
         display="flex"
         justifyContent="space-between"
         alignItems="center"
+        mt="-25px"
       >
-        <Table w="100%" h="100%" variant="simple" border="1px solid blue">
+        <Table w="100%" h="100%" variant="simple">
           <Thead>
-            <Tr
-              w="100%"
-              border="1px solid orange"
-              display="flex"
-              justifyContent="space-evenly"
-            >
+            <Tr w="100%">
               <Th>Hoje</Th>
               <Th>Amanhã</Th>
               <Th>Sexta</Th>
               <Th>Sábado</Th>
             </Tr>
           </Thead>
-          <Tbody w="100%" border="1px solid green">
-            <Tr
-              w="100%"
-              border="1px solid orange"
-              display="flex"
-              justifyContent="space-evenly"
-            >
-              <Td>12 Abr</Td>
-              <Td>13 Abr</Td>
-              <Td>14 Abr</Td>
-              <Td>15 Abr</Td>
+          <Tbody w="100%">
+            <Tr w="100%">
+              <Td textAlign="center">12 Abr</Td>
+              <Td textAlign="center">13 Abr</Td>
+              <Td textAlign="center">14 Abr</Td>
+              <Td textAlign="center">15 Abr</Td>
+            </Tr>
+            <Tr w="100%">
+              <Td textAlign="center">-</Td>
+              <Td textAlign="center">10:00</Td>
+              <Td textAlign="center">-</Td>
+              <Td textAlign="center">-</Td>
             </Tr>
             <Tr>
-              <Td>-</Td>
-              <Td>10:00</Td>
-              <Td>-</Td>
-              <Td>-</Td>
+              <Td textAlign="center">-</Td>
+              <Td textAlign="center">12:00</Td>
+              <Td textAlign="center">-</Td>
+              <Td textAlign="center">-</Td>
             </Tr>
             <Tr>
-              <Td>-</Td>
-              <Td>12:00</Td>
-              <Td>-</Td>
-              <Td>-</Td>
+              <Td textAlign="center">-</Td>
+              <Td textAlign="center">13:00</Td>
+              <Td textAlign="center">-</Td>
+              <Td textAlign="center">-</Td>
             </Tr>
             <Tr>
-              <Td>-</Td>
-              <Td>13:00</Td>
-              <Td>-</Td>
-              <Td>-</Td>
-            </Tr>
-            <Tr>
-              <Td>-</Td>
-              <Td>15:00</Td>
-              <Td>-</Td>
-              <Td>-</Td>
+              <Td textAlign="center">-</Td>
+              <Td textAlign="center">15:00</Td>
+              <Td textAlign="center">-</Td>
+              <Td textAlign="center">-</Td>
             </Tr>
           </Tbody>
         </Table>
