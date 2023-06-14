@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Button,
@@ -11,9 +12,18 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { AppleButton, FacebookButton, GoogleButton } from "../../../components";
+import * as authService from "../../../services/auth-service";
 
 export const Login = () => {
+  const [user, setUser] = React.useState({ username: "", password: "" });
+
   const navigate = useNavigate();
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    authService.loginRequest(user)
+    .then(res => console.log(res))
+  };
 
   const handleGoToSignin = () => {
     navigate("/access/signin");
@@ -40,6 +50,8 @@ export const Login = () => {
             bgColor="#F4F4F4"
             border="0.9px solid #004238"
             borderRadius="0.5rem"
+            value={user.username}
+            onChange={(e) => setUser({ ...user, username: e.target.value })}
           />
 
           <Input
@@ -50,6 +62,8 @@ export const Login = () => {
             bgColor="#F4F4F4"
             border="0.9px solid #004238"
             borderRadius="0.5rem"
+            value={user.password}
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
 
           <Button
@@ -62,6 +76,7 @@ export const Login = () => {
             fontWeight={500}
             lineHeight="1.5rem"
             cursor="pointer"
+            onClick={(e) => handleSubmit(e)}
           >
             Entrar
           </Button>
