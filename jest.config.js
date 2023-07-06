@@ -5,4 +5,7 @@ module.exports = {
       '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/.jest/mocks/fileMock.js',
       '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     },
+    transform: {
+      "\\.[jt]sx?$": "babel-jest"
+    }
   }
